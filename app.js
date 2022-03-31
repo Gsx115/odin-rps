@@ -37,4 +37,15 @@ function playRound(player, comp){
     return (combos[player] === comp) ? "lose" : "win";
 }
 
-console.log(playRound(playerSelection(),computerPlay()));
+function game() {
+    let playerScore = 0, compScore = 0;
+    for(let i = 1; i <= 5; i++){
+        let outcome = playRound(playerSelection(),computerPlay());
+        if (outcome !== "tie") ( outcome === "win") ? playerScore++ : compScore++;
+        console.log(`Round ${i} Scores
+        User: ${playerScore}
+        Computer: ${compScore}`);
+    }
+    return (playerScore > compScore) ? "You Win!" : (playerScore == compScore) ? "You Tied!" : "You Lose!";
+}
+console.log(game());
