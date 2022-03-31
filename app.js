@@ -28,6 +28,7 @@ function playerSelection(){
 
     do {
         userPlay = prompt("Please enter your choice. Rock, Paper, or Scissors");
+        if(userPlay === null) return null;
     } while (!choices.includes(userPlay.toLowerCase()));
 
     return userPlay.toLowerCase();
@@ -41,6 +42,10 @@ function playerSelection(){
 //  via known loss combinations
 // Returns win or lose respectively
 function playRound(player, comp){
+    if(player === null) {
+        alert("You chose violence, so we will play for you");
+        player = computerPlay();
+    }
     console.log(`user: ${player}`);
     console.log(`comp: ${comp}`);
     const combos = {
