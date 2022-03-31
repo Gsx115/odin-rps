@@ -1,6 +1,6 @@
 function computerPlay () {
-    let play = Math.floor(Math.random() * 3)+1;
-    switch (play){
+    let comPlay = Math.floor(Math.random() * 3)+1;
+    switch (comPlay){
         case 1:
             return "rock";
         case 2:
@@ -13,4 +13,17 @@ function computerPlay () {
     }
 }
 
+function playerSelection(){
+    const choices = ["rock","paper","scissors"];
+    let userPlay;
+
+    do {
+        userPlay = prompt("Please enter your choice. Rock, Paper, or Scissors");
+    } while (!choices.includes(userPlay));
+    
+    return userPlay.toLowerCase();
+
+}
+
 console.log(computerPlay());
+console.log(`user: ${playerSelection()}`);
