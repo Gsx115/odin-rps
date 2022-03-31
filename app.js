@@ -19,11 +19,22 @@ function playerSelection(){
 
     do {
         userPlay = prompt("Please enter your choice. Rock, Paper, or Scissors");
-    } while (!choices.includes(userPlay));
-    
+    } while (!choices.includes(userPlay.toLowerCase()));
+
     return userPlay.toLowerCase();
 
 }
 
-console.log(computerPlay());
-console.log(`user: ${playerSelection()}`);
+function playRound(player, comp){
+    console.log(`user: ${player}`);
+    console.log(`comp: ${comp}`);
+    const combos = {
+        "rock" : "paper",
+        "paper" : "scissors",
+        "scissors" : "rock"
+    }
+    if (player === comp) return "tie";
+    return (combos[player] === comp) ? "lose" : "win";
+}
+
+console.log(playRound(playerSelection(),computerPlay()));
