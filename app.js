@@ -1,3 +1,7 @@
+// computerPlay
+// Generates a random number between 1 and 3
+// Uses a switch statement to return what play was 
+//  randomly selected
 function computerPlay () {
     let comPlay = Math.floor(Math.random() * 3)+1;
     switch (comPlay){
@@ -13,6 +17,11 @@ function computerPlay () {
     }
 }
 
+
+// playerSelection
+// Prompts user for a play and loops until user enters
+//  a suitable play
+// Returns play in lower case
 function playerSelection(){
     const choices = ["rock","paper","scissors"];
     let userPlay;
@@ -25,6 +34,12 @@ function playerSelection(){
 
 }
 
+// playRound
+// Takes the player and computer choice
+// First checks for a tie
+// If not a tie, then compares comp play to user play
+//  via known loss combinations
+// Returns win or lose respectively
 function playRound(player, comp){
     console.log(`user: ${player}`);
     console.log(`comp: ${comp}`);
@@ -37,6 +52,12 @@ function playRound(player, comp){
     return (combos[player] === comp) ? "lose" : "win";
 }
 
+
+// game
+// Sets player and computer score to 0 (zero)
+// Loops through 5 game rounds and tracks scores
+// Console logs the score for every round
+// Returns a Win, Lose or Tie announcement
 function game() {
     let playerScore = 0, compScore = 0;
     for(let i = 1; i <= 5; i++){
@@ -48,4 +69,7 @@ function game() {
     }
     return (playerScore > compScore) ? "You Win!" : (playerScore == compScore) ? "You Tied!" : "You Lose!";
 }
+
+
+// console logs the outcome of the game
 console.log(game());
