@@ -1,0 +1,39 @@
+body {
+    background-color: #000;
+}
+
+.title, .subtitle {
+    color: #fff;
+    text-align: center;
+}
+
+.title {
+    font-family: "Amatic SC",sans-serif;
+    font-size: 100px;
+    font-weight: 700;
+}
+
+.subtitle {
+    font-family: "Permanent Marker", sans-serif;
+    font-size: 60px;
+}
+
+#move-container{
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.btn {
+    width: 100px;
+    height: 100px;
+    border-radius: 20px;
+}
+
+.btn-move {
+    background-color: #eee;
+    color: #000;
+    font-size: 50px;
+}

@@ -77,4 +77,4 @@ function game() {
 
 
 // console logs the outcome of the game
-console.log(game());
+//console.log(game());
