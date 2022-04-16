@@ -29,6 +29,8 @@ body {
 .btn {
     height: 100px;
     border-radius: 20px;
+    line-height: 100px;
+    text-align: center;
 }
 
 .btn-move {
@@ -36,9 +38,6 @@ body {
     background-color: #ccc;
     color: #000;
     font-size: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     box-shadow: inset 1px 1px 2px #fff, inset -1px -1px 2px #000;
 }
 
@@ -48,13 +47,11 @@ body {
     font-size: 50px;
     background-color: #ccc;
     color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: block;
     box-shadow: inset 1px 1px 2px #fff, inset -1px -1px 2px #000;
 }
 
-.btn-move:active{
+.btn:active{
     box-shadow: inset 1px 1px 2px #000, inset -1px -1px 2px #fff;
 }
 
@@ -62,6 +59,13 @@ body {
     text-align: center;
     font-size: 100px;
     font-family: "Bebas Neue", sans-serif;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .hide {

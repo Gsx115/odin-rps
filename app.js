@@ -8,6 +8,7 @@ const end = document.querySelector('#end-container');
 let playerScore = 0, compScore = 0;
 
 start.addEventListener('click',()=>{
+    
     start.classList.toggle('hide');
     moves.classList.toggle('hide');
     game();    
@@ -109,6 +110,7 @@ function game() {
 
 function endGame() {
     end.classList.toggle('hide');
+    moves.classList.toggle('hide');
     displayOutput('test');
 }
 
