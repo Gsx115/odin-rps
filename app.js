@@ -1,3 +1,35 @@
+const rock = document.querySelector('#rock');
+const paper = document.querySelector('#paper');
+const scissors = document.querySelector('#scissors');
+const output = document.querySelector('#result');
+const start = document.querySelector('#start-game');
+const moves = document.querySelector('#move-container');
+const end = document.querySelector('#end-container');
+let playerScore = 0, compScore = 0;
+
+start.addEventListener('click',()=>{
+    start.classList.toggle('hide');
+    moves.classList.toggle('hide');
+    game();    
+
+    rock.addEventListener('click',()=>{
+        playRound('rock',computerPlay());
+    });
+
+    paper.addEventListener('click',()=>{
+        playRound('paper',computerPlay());
+    });
+
+    scissors.addEventListener('click',()=>{
+        playRound('scissors',computerPlay());
+    });
+})
+
+
+function displayOutput (result){
+    output.textContent = result;
+}
+
 // computerPlay
 // Generates a random number between 1 and 3
 // Uses a switch statement to return what play was 
@@ -53,8 +85,9 @@ function playRound(player, comp){
         "paper" : "scissors",
         "scissors" : "rock"
     }
-    if (player === comp) return "tie";
-    return (combos[player] === comp) ? "lose" : "win";
+    if (player === comp) return;
+    (combos[player] === comp) ? ++compScore : ++playerScore;
+    if(compScore === 5 || playerScore === 5) endGame();
 }
 
 
@@ -64,15 +97,19 @@ function playRound(player, comp){
 // Console logs the score for every round
 // Returns a Win, Lose or Tie announcement
 function game() {
-    let playerScore = 0, compScore = 0;
-    for(let i = 1; i <= 5; i++){
-        let outcome = playRound(playerSelection(),computerPlay());
-        if (outcome !== "tie") ( outcome === "win") ? playerScore++ : compScore++;
-        console.log(`Round ${i} Scores
-        User: ${playerScore}
-        Computer: ${compScore}`);
-    }
-    return (playerScore > compScore) ? "You Win!" : (playerScore == compScore) ? "You Tied!" : "You Lose!";
+    playerScore = 0;
+    compScore = 0;
+    // let outcome = playRound(playerSelection(),computerPlay());
+    // if (outcome !== "tie") ( outcome === "win") ? playerScore++ : compScore++;
+    // console.log(`Round ${i} Scores
+    // User: ${playerScore}
+    // Computer: ${compScore}`);
+    //return (playerScore > compScore) ? "You Win!" : (playerScore == compScore) ? "You Tied!" : "You Lose!";
+}
+
+function endGame() {
+    end.classList.toggle('hide');
+    displayOutput('test');
 }
 
 

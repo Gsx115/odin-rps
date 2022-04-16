@@ -1,5 +1,5 @@
 body {
-    background-color: #000;
+    background-color: #666;
 }
 
 .title, .subtitle {
@@ -18,7 +18,7 @@ body {
     font-size: 60px;
 }
 
-#move-container{
+.container{
     margin: 30px 0;
     display: flex;
     justify-content: center;
@@ -27,13 +27,43 @@ body {
 }
 
 .btn {
-    width: 100px;
     height: 100px;
     border-radius: 20px;
 }
 
 .btn-move {
-    background-color: #eee;
+    width: 100px;
+    background-color: #ccc;
     color: #000;
     font-size: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 1px 1px 2px #fff, inset -1px -1px 2px #000;
+}
+
+.btn-start, .btn-again {
+    width: 300px;
+    font-family: "Amatic SC",sans-serif;
+    font-size: 50px;
+    background-color: #ccc;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 1px 1px 2px #fff, inset -1px -1px 2px #000;
+}
+
+.btn-move:active{
+    box-shadow: inset 1px 1px 2px #000, inset -1px -1px 2px #fff;
+}
+
+#result {
+    text-align: center;
+    font-size: 100px;
+    font-family: "Bebas Neue", sans-serif;
+}
+
+.hide {
+    display: none;
 }
