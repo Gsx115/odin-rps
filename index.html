@@ -6,26 +6,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Bebas+Neue&family=Permanent+Marker&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Major+Mono+Display&family=Orbitron:wght@900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="reset.css">
     <script src="https://kit.fontawesome.com/560c13946d.js" crossorigin="anonymous"></script>
     <title>Rock, Paper, Scissors</title>
 </head>
 <body>
-    <h1 class="title">Rock - Paper - Scissors</h1>
-    <h3 class="subtitle">User vs. Computer</h3>
+    <h1 class="title">&mdash;RPS&mdash;</h1>
+    <h3 class="subtitle" player-score="0" comp-score="0"><span class="user">User</span> / <span class="comp">Computer</span></h3>
     <div id="start-container" class="container">
-        <a id="start-game" class="btn btn-start">Start New Game</a>
+        <a id="start-game" class="btn btn-pri">Start New Game</a>
     </div>
     <div id="move-container" class="container hide">
-        <a id="rock" class="btn btn-move"><i class="fa-solid fa-hand-back-fist"></i></a>
-        <a id="paper" class="btn btn-move"><i class="fa-solid fa-hand"></i></a>
-        <a id="scissors" class="btn btn-move"><i class="fa-solid fa-hand-scissors"></i></a>
+        <a id="rock" class="btn btn-pri"><i class="fa-solid fa-hand-back-fist"></i></a>
+        <a id="paper" class="btn btn-pri"><i class="fa-solid fa-hand"></i></a>
+        <a id="scissors" class="btn btn-pri"><i class="fa-solid fa-hand-scissors"></i></a>
     </div>
     <div id="end-container" class="container flex-column hide">
         <div id="result"></div>
-        <a id="play-again" class="btn btn-again">Play Again</a>
+        <a id="play-again" class="btn btn-pri">Play Again</a>
     </div>
 <script src="app.js"></script>
 </body>

@@ -1,3 +1,4 @@
+// Const Element Variable Initialize
 const rock = document.querySelector('#rock');
 const paper = document.querySelector('#paper');
 const scissors = document.querySelector('#scissors');
@@ -5,14 +6,21 @@ const output = document.querySelector('#result');
 const start = document.querySelector('#start-game');
 const moves = document.querySelector('#move-container');
 const end = document.querySelector('#end-container');
+const playAgain = document.querySelector('#play-again');
+const scoreBoard = document.querySelector('.subtitle');
+
+// Score keeping variables
 let playerScore = 0, compScore = 0;
 
+// Star game button - Click event
 start.addEventListener('click',()=>{
-    
+    // Toggle show/hide for button divs
     start.classList.toggle('hide');
     moves.classList.toggle('hide');
-    game();    
+    
+    newGame();  // New Game function call
 
+    // Click Event Listeners for user move selection
     rock.addEventListener('click',()=>{
         playRound('rock',computerPlay());
     });
@@ -26,8 +34,21 @@ start.addEventListener('click',()=>{
     });
 })
 
+// Play again button - Click event
+playAgain.addEventListener('click',()=>{
+    // Toggle show/hide for button divs
+    end.classList.toggle('hide');
+    moves.classList.toggle('hide');
 
-function displayOutput (result){
+    newGame(); // New Game function call
+});
+
+// displayOutput
+// Selects output message based on result of game
+function displayOutput (){
+    let result = 'Humans lose.  MCP Wins.'
+    if(playerScore === compScore) result = 'No winner was decided today';
+    else if (playerScore > compScore) result = 'Tron defeats MCP'
     output.textContent = result;
 }
 
@@ -36,7 +57,7 @@ function displayOutput (result){
 // Uses a switch statement to return what play was 
 //  randomly selected
 function computerPlay () {
-    let comPlay = Math.floor(Math.random() * 3)+1;
+    let comPlay = Math.floor(Math.random() * 3+1);
     switch (comPlay){
         case 1:
             return "rock";
@@ -50,24 +71,6 @@ function computerPlay () {
     }
 }
 
-
-// playerSelection
-// Prompts user for a play and loops until user enters
-//  a suitable play
-// Returns play in lower case
-function playerSelection(){
-    const choices = ["rock","paper","scissors"];
-    let userPlay;
-
-    do {
-        userPlay = prompt("Please enter your choice. Rock, Paper, or Scissors");
-        if(userPlay === null) return null;
-    } while (!choices.includes(userPlay.toLowerCase()));
-
-    return userPlay.toLowerCase();
-
-}
-
 // playRound
 // Takes the player and computer choice
 // First checks for a tie
@@ -75,45 +78,78 @@ function playerSelection(){
 //  via known loss combinations
 // Returns win or lose respectively
 function playRound(player, comp){
-    if(player === null) {
-        alert("You chose violence, so we will play for you");
-        player = computerPlay();
-    }
-    console.log(`user: ${player}`);
-    console.log(`comp: ${comp}`);
+    clearAura();  // Clear auras from previous round
+    
+    setAura(player,comp); // Sets new move auras
+
+    // Win/lose move combinations
     const combos = {
         "rock" : "paper",
         "paper" : "scissors",
         "scissors" : "rock"
     }
-    if (player === comp) return;
-    (combos[player] === comp) ? ++compScore : ++playerScore;
-    if(compScore === 5 || playerScore === 5) endGame();
+
+    if (player === comp) return;  // Tie check
+    (combos[player] === comp) ? ++compScore : ++playerScore; // Increment score
+
+    if(compScore === 5 || playerScore === 5) endGame();  // First to 5 ends game
+
+    // function call to update scoreboard
+    updateScores();
 }
 
+// updateScores
+// Change content of scoreboard by updating the HTML attributes
+function updateScores(){
+    scoreBoard.setAttribute('player-score',playerScore);
+    scoreBoard.setAttribute('comp-score',compScore);
+}
 
-// game
-// Sets player and computer score to 0 (zero)
-// Loops through 5 game rounds and tracks scores
-// Console logs the score for every round
-// Returns a Win, Lose or Tie announcement
-function game() {
+// clearAura
+// Loops through all move elements to remove all aura css
+function clearAura(){
+    let elements = [rock, paper, scissors];
+    elements.forEach((choice)=>{
+        choice.classList.remove('user-choice');
+        choice.classList.remove('comp-choice');
+        choice.classList.remove('tied');
+    });
+}
+
+// setAura
+// Takes player and comp choice and gets correlated element
+// Assigns proper aura to move choice
+function setAura(player, comp){
+    const element = {
+        "rock":rock,
+        "paper":paper,
+        "scissors":scissors
+    }
+    if (player === comp){
+        element[player].classList.toggle('tied');
+        return;
+    }
+    element[player].classList.toggle('user-choice');
+    element[comp].classList.toggle('comp-choice');
+}
+
+// newGame
+// Sets scores to 0
+// Updates scoreboard
+// Clears all move auras
+function newGame() {
     playerScore = 0;
     compScore = 0;
-    // let outcome = playRound(playerSelection(),computerPlay());
-    // if (outcome !== "tie") ( outcome === "win") ? playerScore++ : compScore++;
-    // console.log(`Round ${i} Scores
-    // User: ${playerScore}
-    // Computer: ${compScore}`);
-    //return (playerScore > compScore) ? "You Win!" : (playerScore == compScore) ? "You Tied!" : "You Lose!";
+    updateScores();
+    clearAura();
 }
 
+// endGame
+// Hides moves
+// Shows end game div
+// calls displayOutput function
 function endGame() {
     end.classList.toggle('hide');
     moves.classList.toggle('hide');
-    displayOutput('test');
+    displayOutput();
 }
-
-
-// console logs the outcome of the game
-//console.log(game());

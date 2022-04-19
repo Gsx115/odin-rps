@@ -1,25 +1,50 @@
 body {
-    background-color: #666;
+    background-color: #000;
 }
 
-.title, .subtitle {
-    color: #fff;
+.subtitle::before, .subtitle::after {
+    width: max-content;
+}
+
+.subtitle::before {
+    content: attr(player-score);
+    text-align: left;
+    margin-right: 30px;
+}
+
+.subtitle::after {
+    content: attr(comp-score);
+    text-align: right;
+    margin-left: 30px;
+}
+
+.title, .subtitle, .btn-pri {
+    color: #E6FFFF;
+    text-shadow: 0 0 10px;
     text-align: center;
+    margin: 10px;
 }
 
 .title {
-    font-family: "Amatic SC",sans-serif;
+    font-family: 'Orbitron', sans-serif;
     font-size: 100px;
-    font-weight: 700;
+    font-weight: 900;
 }
 
-.subtitle {
-    font-family: "Permanent Marker", sans-serif;
+.subtitle, .btn-pri {
+    font-family: 'Share Tech Mono', monospace;
     font-size: 60px;
 }
 
+.user, .subtitle::before {
+    color: #6FC3DF;
+}
+
+.comp, .subtitle::after {
+    color: #DF740C;
+}
+
 .container{
-    margin: 30px 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -27,38 +52,24 @@ body {
 }
 
 .btn {
-    height: 100px;
-    border-radius: 20px;
-    line-height: 100px;
+    height: max-content;
     text-align: center;
+    border: 5px solid #E6FFFF;
+    width: max-content;
+    padding: 10px 20px;
+    box-shadow: 0 0 10px 2px #E6FFFF;
 }
 
-.btn-move {
-    width: 100px;
-    background-color: #ccc;
-    color: #000;
-    font-size: 50px;
-    box-shadow: inset 1px 1px 2px #fff, inset -1px -1px 2px #000;
-}
-
-.btn-start, .btn-again {
-    width: 300px;
-    font-family: "Amatic SC",sans-serif;
-    font-size: 50px;
-    background-color: #ccc;
-    color: #000;
-    display: block;
-    box-shadow: inset 1px 1px 2px #fff, inset -1px -1px 2px #000;
-}
-
-.btn:active{
-    box-shadow: inset 1px 1px 2px #000, inset -1px -1px 2px #fff;
+.btn:hover {
+    cursor: pointer;
 }
 
 #result {
     text-align: center;
-    font-size: 100px;
-    font-family: "Bebas Neue", sans-serif;
+    font-size: 50px;
+    font-family: 'Major Mono Display', monospace;
+    color: #E6FFFF;
+    margin: 20px;
 }
 
 .flex-column {
@@ -70,4 +81,21 @@ body {
 
 .hide {
     display: none;
+}
+
+.user-choice {
+    background-color: #6FC3DF;
+}
+
+.comp-choice {
+    background-color: #DF740C;
+}
+
+.tied {
+    background-color: #FFE64D;
+}
+
+.user-choice, .comp-choice, .tied {
+    color: #0C141F;
+    text-shadow: none;
 }
